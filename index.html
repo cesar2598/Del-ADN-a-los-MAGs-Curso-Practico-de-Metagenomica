@@ -7,89 +7,98 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Del ADN a los MAGs: Curso Práctico de Metagenómica</h1>
-  </header>
-  <main>
-    <section>
-      <h2>Cronograma</h2>
+  <div id="container">
+    <div id="sidebar">
+      <h2>Secciones</h2>
       <ul>
-        <li>Análisis preliminar y limpieza de secuencias crudas</li>
-        <li>Anotación taxonómica</li>
-        <li>Análisis de diversidad</li>
-        <li>Ensamblaje de metagenomas</li>
-        <li>Recuperación de genomas a partir de metagenomas (Binning)</li>
-        <li>Anotación funcional de MAGs</li>
-        <li>Filogenómica de MAGs</li>
+        <li><a href="#cronograma">Cronograma</a></li>
+        <li><a href="#conda">Conda</a></li>
+        <li><a href="#limpieza">Limpieza de secuencias</a></li>
+        <li><a href="#taxonomia">Anotación taxonómica</a></li>
+        <li><a href="#diversidad">Análisis de diversidad</a></li>
+        <li><a href="#ensamblaje">Ensamblaje</a></li>
+        <li><a href="#binning">Binning</a></li>
+        <li><a href="#funcional">Anotación funcional</a></li>
+        <li><a href="#filogenomica">Filogenómica</a></li>
       </ul>
-    </section>
+    </div>
+    <div id="main">
+      <h1>Del ADN a los MAGs: Curso Práctico de Metagenómica</h1>
 
-    <section>
-      <h2>Conda</h2>
-      <p><strong>Miniconda:</strong> <a href="https://www.anaconda.com/docs/getting-started/miniconda/install#macos-linux-installation" target="_blank">Página de instalación</a></p>
-      <pre><code>wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</code></pre>
-      <pre><code>bash ~/Miniconda3-latest-Linux-x86_64.sh</code></pre>
+      <h2 id="cronograma">Cronograma</h2>
+      <p>* Análisis preliminar y limpieza de secuencias crudas<br>
+      * Anotación taxonómica<br>
+      * Análisis de diversidad<br>
+      * Ensamblaje de metagenomas<br>
+      * Recuperación de genomas a partir de metagenomas (Binning)<br>
+      * Anotación funcional de MAGs<br>
+      * Filogenómica de MAGs</p>
+
+      <h2 id="conda">Conda</h2>
+      <p><strong>Miniconda:</strong> <a href="https://www.anaconda.com/docs/getting-started/miniconda/install#macos-linux-installation" target="_blank">Instalación</a></p>
+      <div class="code-box">wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</div>
+      <div class="code-box">bash ~/Miniconda3-latest-Linux-x86_64.sh</div>
+      <p>Aclaración: el símbolo ~ debe ser reemplazado con la ruta local al archivo</p>
+      <p>Press Return to review Anaconda’s Terms of Service (TOS). Then press and hold Return to scroll.<br>
+      Enter yes to agree to the TOS.<br>
+      Press Return to accept la ubicación de instalación por defecto o elige una diferente.<br>
+      Elige una opción de inicialización:<br>
+      Yes - conda modificará la terminal para iniciarse automáticamente.<br>
+      No - deberás iniciar conda manualmente.<br>
+      “Thank you for installing Miniconda3!”</p>
+      <p>Cierra el terminal y vuelve a abrirlo para confirmar que se instaló correctamente.</p>
       <p><strong>Probar instalación:</strong></p>
-      <pre><code>conda list</code></pre>
-    </section>
+      <div class="code-box">conda list</div>
 
-    <section>
-      <h2>Análisis preliminar y limpieza</h2>
+      <h2 id="limpieza">Análisis preliminar y limpieza de secuencias crudas</h2>
       <p><strong>Instalación de programas:</strong></p>
-      <pre><code>conda install bioconda::fastqc</code></pre>
-      <pre><code>conda install bioconda::multiqc</code></pre>
-      <pre><code>conda install bioconda::trimmomatic</code></pre>
-    </section>
+      <div class="code-box">conda install bioconda::fastqc</div>
+      <div class="code-box">conda install bioconda::multiqc</div>
+      <div class="code-box">conda install bioconda::trimmomatic</div>
 
-    <section>
-      <h2>Anotación taxonómica</h2>
+      <h2 id="taxonomia">Anotación taxonómica</h2>
       <p><strong>Instalación de Kraken2:</strong></p>
-      <pre><code>conda install bioconda::kraken2</code></pre>
-      <p>Base de datos Kraken2: <a href="https://benlangmead.github.io/aws-indexes/k2" target="_blank">Índices de Kraken</a></p>
-      <pre><code>wget https://genome-idx.s3.amazonaws.com/kraken/k2_standard_08gb_20250402.tar.gz</code></pre>
-      <pre><code>kraken2 --db ~/DB_PlusPF-8 --paired ~/nombre_archivo_forward.fastq ~/nombre_archivo_reverse.fastq --report ~/Kraken2/nombre_de_la_muestra_report --output ~/nombre_de_la_muestra --threads 28</code></pre>
-    </section>
+      <div class="code-box">conda install bioconda::kraken2</div>
+      <p>El proceso de anotación consiste en comparar secuencias propias contra una base de datos de referencia. Kraken2 tiene sus propias bases de datos preconstruidas:<br>
+      <a href="https://benlangmead.github.io/aws-indexes/k2" target="_blank">Enlace a las bases de datos</a></p>
+      <p>Descargar bases de datos Standar-8:</p>
+      <div class="code-box">wget https://genome-idx.s3.amazonaws.com/kraken/k2_standard_08gb_20250402.tar.gz</div>
+      <p><strong>Ejecutar Kraken2:</strong></p>
+      <div class="code-box">kraken2 --db ~/DB_PlusPF-8 --paired ~/nombre_archivo_forward.fastq ~/nombre_archivo_reverse.fastq --report ~/Kraken2/nombre_de_la_muestra_report --output ~/nombre_de_la_muestra --threads 28</div>
 
-    <section>
-      <h2>Análisis de diversidad</h2>
+      <h2 id="diversidad">Análisis de diversidad</h2>
       <p><strong>Instalación de R y RStudio:</strong></p>
-      <pre><code>sudo apt update
-sudo apt upgrade
-sudo apt install -y dirmngr gnupg apt-transport-https ca-certificates software-properties-common
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 51716619E084DAB9
-sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu jammy-cran40/"
-sudo apt install -y r-base
-R --version</code></pre>
-      <p><strong>Descargar e instalar RStudio:</strong> <a href="https://posit.co/download/rstudio-desktop/" target="_blank">Descargar RStudio</a></p>
-      <pre><code>sudo apt install -y ./rstudio-*.deb</code></pre>
-      <p><strong>Paquetes recomendados:</strong></p>
-      <pre><code>if (!require("BiocManager", quietly = TRUE)) install.packages("BiocManager")
-BiocManager::install("phyloseq")</code></pre>
-      <pre><code>rstudio</code></pre>
-    </section>
+      <div class="code-box">sudo apt update</div>
+      <div class="code-box">sudo apt upgrade</div>
+      <div class="code-box">sudo apt install -y dirmngr gnupg apt-transport-https ca-certificates software-properties-common</div>
+      <div class="code-box">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 51716619E084DAB9</div>
+      <div class="code-box">sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu jammy-cran40/"</div>
+      <div class="code-box">sudo apt install -y r-base</div>
+      <div class="code-box">R --version</div>
+      <p><strong>Descargar RStudio:</strong> <a href="https://posit.co/download/rstudio-desktop/" target="_blank">Descargar desde Posit</a></p>
+      <div class="code-box">sudo apt install -y ./rstudio-*.deb</div>
+      <p><strong>Instalar paquetes:</strong></p>
+      <div class="code-box">if (!require("BiocManager", quietly = TRUE)) install.packages("BiocManager")</div>
+      <div class="code-box">BiocManager::install("phyloseq")</div>
+      <div class="code-box">rstudio</div>
 
-    <section>
-      <h2>Ensamblaje de metagenomas</h2>
-      <pre><code>Instalación de Spades</code></pre>
-    </section>
+      <h2 id="ensamblaje">Ensamblaje de metagenomas</h2>
+      <p><strong>Instalación de programas:</strong></p>
+      <div class="code-box">*Spades</div>
 
-    <section>
-      <h2>Binning (Recuperación de genomas)</h2>
-      <pre><code>Instalación de Metawrap</code></pre>
-    </section>
+      <h2 id="binning">Recuperación de genomas (Binning)</h2>
+      <p><strong>Instalación de programas:</strong></p>
+      <div class="code-box">*Metawrap</div>
 
-    <section>
-      <h2>Anotación funcional de MAGs</h2>
-      <pre><code>Instalación de Prokka</code></pre>
-      <pre><code>Instalación de Microbiomeprofiler en RStudio</code></pre>
-    </section>
+      <h2 id="funcional">Anotación funcional de MAGs</h2>
+      <p><strong>Instalación de programas:</strong></p>
+      <div class="code-box">*Prokka</div>
+      <div class="code-box">*Microbiomeprofiler</div>
 
-    <section>
-      <h2>Filogenómica de MAGs</h2>
-      <pre><code>Instalación de GTDB-tk</code></pre>
-    </section>
-  </main>
+      <h2 id="filogenomica">Filogenómica de MAGs</h2>
+      <p><strong>Instalación de programas:</strong></p>
+      <div class="code-box">*GTDB-tk</div>
+    </div>
+  </div>
 </body>
 </html>
-
-
