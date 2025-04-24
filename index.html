@@ -62,6 +62,7 @@
       <p>El proceso de anotación consiste en comparar secuencias propias contra una base de datos de referencia. Kraken2 tiene sus propias bases de datos preconstruidas:<br>
       <a href="https://benlangmead.github.io/aws-indexes/k2" target="_blank">Enlace a las bases de datos</a></p>
       <p>Descargar bases de datos Standar-8:</p>
+      Pueden dar click sobre el archio .tar.gz o utilizar el comando desde su terminal. <br>
       <div class="code-box">wget https://genome-idx.s3.amazonaws.com/kraken/k2_standard_08gb_20250402.tar.gz</div>
       <p><strong>Ejecutar Kraken2:</strong></p>
       <div class="code-box">kraken2 --db ~/DB_PlusPF-8 --paired ~/nombre_archivo_forward.fastq ~/nombre_archivo_reverse.fastq --report ~/Kraken2/nombre_de_la_muestra_report --output ~/nombre_de_la_muestra --threads 28</div>
