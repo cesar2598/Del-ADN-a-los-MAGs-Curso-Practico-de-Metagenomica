@@ -1,1 +1,1 @@
-# Del-ADN-a-los-MAGs-Curso-Pr-ctico-de-Metagen-mica
+# Del-ADN-a-los-MAGs-Curso-Práctico-de-Metagenómica
