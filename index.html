@@ -68,7 +68,11 @@
       <div class="code-box">wget https://genome-idx.s3.amazonaws.com/kraken/k2_standard_08gb_20250402.tar.gz</div>
       <p><strong>Ejecutar Kraken2:</strong></p>
       <div class="code-box">kraken2 --db ~/DB_PlusPF-8 --paired ~/nombre_archivo_forward.fastq ~/nombre_archivo_reverse.fastq --report ~/Kraken2/nombre_de_la_muestra_report --output ~/nombre_de_la_muestra --threads 28</div>
-
+       <p><strong>Ejecutar Kraken-Biom:</strong></p>
+      <div class="code-box">conda activate krakenbiom </div>
+      <div class="code-box">pip install pathlib </div>
+      <div class="code-box">kraken-biom ~/Muestra_1_report ~/muestra_2_report -o ~/Archico_de_salida </div>
+      
       <h2 id="diversidad">Análisis de diversidad</h2>
       <p><strong>Instalación de R y RStudio:</strong></p>
       <div class="code-box">sudo apt update</div>
