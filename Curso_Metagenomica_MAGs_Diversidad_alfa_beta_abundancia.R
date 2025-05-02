@@ -17,16 +17,6 @@ setwd("C:ruta/al/archivo/biom")
 #Cargar el archivo biom a la sesión de R
 Curso_Metagenomica <- import_biom("Metatrans_completo.biom")
 
-#Importamos el archivo de meta datos a la carpeta de trabajo
-#el nombre de las muestras debe ser idéntico en ambos archivos para evitar errores
-metadata <- read.csv("metadata.csv", row.names = 1) 
-
-#Convertir el objeto a sample data
-metadata <- sample_data(metadata)
-
-#Agregar los metadatos al objeto phyloseq
-Curso_Metagenomica <- merge_phyloseq(Curso_Metagenomica, metadata)
-
 ####Exploración de los datos ####
 
 #Qué clase de objeto
