@@ -159,25 +159,32 @@ relative_plot
 
 ####Diversidad Beta####
 
-#normalización
+#Análisis de coordendas principales
 
-Norm_meta = normalize(GlobalPatterns.prune)
-Conteos = GlobalPatterns.prune@otu_table@.Data
-Conteos = as.data.frame(Conteos)
-Conteos_norm = scale(Conteos)
+# Normalizar los datos con base en los conteos
+Curso_Metagenomica_norm <- transform_sample_counts(Curso_Metagenomica_min5, function(x) x / sum(x))
 
-#Transponer la tabla, sino la función de PERMANOVA no funciona
-Conteos_t= t(Conteos)
+# Calcular PCoA con distancia de Bray-Curtis
+ordu <- ordinate(Curso_Metagenomica_norm, method = "PCoA", distance = "bray")
+
+# Visualizar (ajusta "TuVariable" al nombre de la variable de agrupación en tus metadatos)
+plot_ordination(Curso_Metagenomica_rel, ordu, type = "Sample", 
+                color = "Specie", shape = "Tissue") +
+  geom_point(size = 5) +
+  geom_text(aes(label = Sample), size = 5, vjust = -1) +  # aumenta el tamaño aquí
+  theme_bw()
+
+#PERMANOVA
+
+#Extraer la tabla de conteos normalizados
+Conteos_norm = Curso_Metagenomica_norm@otu_table@.Data
+#Trasponer la tabla de conteos (Sino la función no corre)
+Conteos_t= t(Conteos_norm)
+#Convertir la tabla en un data frame
 Conteos_t = as.data.frame(Conteos_t)
 
-#PCoA
-#Con phyloseq
-GlobalPatterns.prune.ord <- ordinate(GlobalPatterns.prune, "PCoA", "bray")
-plot_ordination(GlobalPatterns.prune, GlobalPatterns.prune.ord, type = "Sample", 
-                color = "Tissue", label = "Sample") + theme_bw() +
-  geom_point(size = 5)
+#Ejecutar la PERMANOVA
+adonis2(Conteos_t ~ Specie, data = Meta_data, permutations = 9999, method = "bray")
+adonis2(Conteos_t ~ Tissue, data = Meta_data, permutations = 9999, method = "bray")
+adonis2(Conteos_t ~ Specie*Tissue, data = Meta_data, permutations = 9999, method = "bray")
 
-GlobalPatterns.prune.ord <- ordinate(GlobalPatterns.prune, "PCoA", "jaccard")
-plot_ordination(GlobalPatterns.prune, GlobalPatterns.prune.ord, type = "Sample", 
-                color = "Specie", shape = "Tissue", label = "Sample") + theme_bw() +
-  geom_point(size = 3)
