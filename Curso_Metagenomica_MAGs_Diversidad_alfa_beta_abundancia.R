@@ -14,6 +14,7 @@ install.packages("ggplot2")
 
 #Entrar a la ubicación donde está guardado el archivo .biom
 setwd("C:ruta/al/archivo/biom")
+library(phyloseq)
 #Cargar el archivo biom a la sesión de R
 Curso_Metagenomica <- import_biom("Metagenomas.biom")
 
