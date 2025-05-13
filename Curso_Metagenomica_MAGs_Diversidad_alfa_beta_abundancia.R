@@ -15,7 +15,7 @@ install.packages("ggplot2")
 #Entrar a la ubicación donde está guardado el archivo .biom
 setwd("C:ruta/al/archivo/biom")
 #Cargar el archivo biom a la sesión de R
-Curso_Metagenomica <- import_biom("Metatrans_completo.biom")
+Curso_Metagenomica <- import_biom("Metagenomas.biom")
 
 ####Exploración de los datos ####
 
