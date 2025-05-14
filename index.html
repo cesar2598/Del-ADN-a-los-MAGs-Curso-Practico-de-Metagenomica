@@ -151,7 +151,20 @@ cat RmR*R2.fastq > RmR_R2.fastq</div>
 rm *.gz</div>
 <p>Establecemos la carpeta como base de datos para checkM</p>
 <div class="code-box">checkm data setRoot /ruta/a/la/carpeta/MY_CHECKM_FOLDER</div>
+<p>Refinamiento de los contenedores</p>
+<div class="code-box">metaWRAP bin_refinement -o /ruta/a/la/carpeta/de/salida \
+-A /ruta/a/la/carpeta/concoct_bins \
+-B /ruta/a/la/carpeta/maxbin2_bins \
+-C /ruta/a/la/carpeta/metabat2_bins \
+-t 8 -m 16 -c 50 -x 10
+</div>
 
+<p><strong>Paso 3: Reensamblaje de los bins</strong></p>
+<div class="code-box">metaWRAP reassemble_bins -o /ruta/a/la/carpeta/de/salida \
+-b /ruta/a/la/carpeta/de/salida/de/bin_refinement/metawrap_50_10_bins \
+-1 /ruta/al/archivo/forward -2 /ruta/al/archivo/reverse \
+-t 8 -m 16
+</div>      
 
       <h2 id="funcional">Anotación funcional de MAGs</h2>
       <p><strong>Instalación de programas:</strong></p>
