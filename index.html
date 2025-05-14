@@ -166,11 +166,14 @@ rm *.gz</div>
 -t 8 -m 16
 </div>      
 
-      <h2 id="funcional">Anotación funcional de MAGs</h2>
-      <p><strong>Instalación de programas:</strong></p>
-      <div class="code-box">*Prokka</div>
-      <div class="code-box">*Microbiomeprofiler</div>
+<h2 id="funcional">Anotación funcional de MAGs</h2>
+<p><strong>Instalación de programas:</strong></p>
+<div class="code-box">conda install bioconda::prokka</div>
+<P>Utilizamos Prokka para realizar la anotación estructural y funcional de los MAGs que logramos ensamblar</P>
+<div class="code-box">prokka /ruta/a/los/MAGs/ensamblados/bin1.fasta \
+  --outdir /ruta/a/la/carpeta/de/salida --cpus 8</div>
 
+--cpus
       <h2 id="filogenomica">Filogenómica de MAGs</h2>
       <p><strong>Instalación de programas:</strong></p>
       <div class="code-box">*GTDB-tk</div>
