@@ -159,7 +159,7 @@ Curso_Metagenomica_norm <- transform_sample_counts(Curso_Metagenomica_min5, func
 ordu <- ordinate(Curso_Metagenomica_norm, method = "PCoA", distance = "bray")
 
 # Visualizar (ajusta "TuVariable" al nombre de la variable de agrupación en tus metadatos)
-plot_ordination(Curso_Metagenomica_rel, ordu, type = "Sample", 
+plot_ordination(Curso_Metagenomica_norm, ordu, type = "Sample", 
                 color = "Specie", shape = "Tissue") +
   geom_point(size = 5) +
   geom_text(aes(label = Sample), size = 5, vjust = -1) +  # aumenta el tamaño aquí
