@@ -124,10 +124,28 @@ conda activate metawrap-env
 conda install -y blas=2.5=mkl #Para corregir un error interno de Metawrap
 </div>
 
-<p><strong>Paso 1: Binning</p>
+<p><strong>Paso 1: Binning</strong></p>
 <div class="code-box">metaWRAP binning -a /ruta/al/metagenoma/ensamblado -o /ruta/a/la/carpeta/de/salida \
 /ruta/al/archivo/al/archivo/forward /ruta/al/archivo/reverse \
 -t 8 -m 8 --metabat2 --maxbin2 --concoct</div>
+
+<p><strong>Paso 2: Refinamiento</strong></p>
+<p>Descargar la base de datos de checkM</p>
+<div class="code-box">#Creamos la carpeta para la base de datos
+mkdir MY_CHECKM_FOLDER
+  
+#Entramos a la carpeta
+cd MY_CHECKM_FOLDER
+
+#Descargamos la base de datos
+wget https://data.ace.uq.edu.au/public/CheckM_databases/checkm_data_2015_01_16.tar.gz
+
+#Descomprimimos la base de datos y eliminamos el archivo comprimido
+tar -xvf *.tar.gz
+rm *.gz
+
+#Establecemos la carpeta como base de datos para checkM
+checkm data setRoot /ruta/a/la/carpeta/MY_CHECKM_FOLDER</div>
 
 
       <h2 id="funcional">Anotación funcional de MAGs</h2>
