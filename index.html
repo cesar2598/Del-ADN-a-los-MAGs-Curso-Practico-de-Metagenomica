@@ -94,11 +94,24 @@
 
       <h2 id="ensamblaje">Ensamblaje de metagenomas</h2>
       <p><strong>Instalación de programas:</strong></p>
-      <div class="code-box">*Spades</div>
+      <div class="code-box"> conda install bioconda::spades</div>
+      <p><strong>Ensamblaje del Metagenoma:</strong></p>
+      <p>La opción "Meta" de spades solo acepta la entrada de un archivo forward y un archico reverse, por elo tanto, debemos unir todas las lecturas en dos archivos</p>
+      <div class="code-box"> cat AgR*R1.fastq > AgR_R1.fastq #Secuencias forward</div>
+      <div class="code-box"> cat AgR*R2.fastq > AgR_R2.fastq #Secuencias reverse</div>
+      <p>Utilizamos Spades en su opción "meta" para el ensamblaje</p>
+      <div class="code-box"> spades --meta -t 8 -o /ruta/a/la/carpeta/de/salida -1 /ruta/al/archivo/forward -2 /ruta/al/archivo/reverse </div>
+
 
       <h2 id="binning">Recuperación de genomas (Binning)</h2>
+      <p>Metawrap es un flujo de trabajo metagenómico ue permite realizar ensamblaje de MAGs</p>
       <p><strong>Instalación de programas:</strong></p>
-      <div class="code-box">*Metawrap</div>
+      
+      <div class="code-box">conda install -y mamba #Instalar mamba
+      mamba create -y --name metawrap-env --channel ursky metawrap-mg=1.3.2 #Crear el ambiente e instalar Metawrap
+      conda activate metawrap-env #Activar el ambiente para trabajar en Metawrap
+      conda install -y blas=2.5=mkl #Para corregir un error interno de Metawrap
+</div>
 
       <h2 id="funcional">Anotación funcional de MAGs</h2>
       <p><strong>Instalación de programas:</strong></p>
