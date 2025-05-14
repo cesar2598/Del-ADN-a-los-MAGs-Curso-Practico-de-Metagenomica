@@ -26,7 +26,7 @@
     <div id="main">
       <h1>Del ADN a los MAGs: Curso Práctico de Metagenómica</h1>
 
-      <h2 id="cronograma">Cronograma</h2>
+      <h1 id="cronograma">Cronograma</h1>
       <p>* Análisis preliminar y limpieza de secuencias crudas<br>
       * Anotación taxonómica<br>
       * Análisis de diversidad<br>
@@ -51,7 +51,7 @@
       <p><strong>Probar instalación:</strong></p>
       <div class="code-box">conda list</div>
 
-      <h2 id="limpieza">Análisis preliminar y limpieza de secuencias crudas</h2>
+      <h1 id="limpieza">Análisis preliminar y limpieza de secuencias crudas</h1>
       <p><strong>Instalación de programas:</strong></p>
       <p>FastQC</p>
       <div class="code-box">conda install bioconda::fastqc</div>
@@ -60,7 +60,7 @@
       <p>Trimmomatic</p>
       <div class="code-box">conda install bioconda::trimmomatic</div>
 
-      <h2 id="taxonomia">Anotación taxonómica</h2>
+      <h1 id="taxonomia">Anotación taxonómica</h1>
       <p><strong>Instalación de Kraken2:</strong></p>
       <div class="code-box">conda install bioconda::kraken2</div>
       <p><strong>Instalación de Kraken-biom:</strong></p>
@@ -87,7 +87,7 @@ o utilizar el siguiente comando desde su terminal.<br>
       <div class="code-box">kraken-biom /ruta/a/la/carpeta/Kraken2/Muestra_1_report /ruta/a/la/carpeta/Kraken2/muestra_2_report \
 -m /ruta/al/archivo/de/metadatos/metadata.tsv -o /ruta/del/archivo/de/salida/Metagenomas.biom </div>
       
-      <h2 id="diversidad">Análisis de diversidad</h2>
+      <h1 id="diversidad">Análisis de diversidad</h1>
       <p><strong>Instalación de R y RStudio:</strong></p>
       <div class="code-box">sudo apt update</div>
       <div class="code-box">sudo apt upgrade</div>
@@ -105,7 +105,7 @@ o utilizar el siguiente comando desde su terminal.<br>
      
       <div class="code-box">rstudio</div>
 
-      <h2 id="ensamblaje">Ensamblaje de metagenomas</h2>
+      <h1 id="ensamblaje">Ensamblaje de metagenomas</h1>
       <p><strong>Instalación de programas:</strong></p>
       <div class="code-box"> conda install bioconda::spades</div>
       <p><strong>Ensamblaje del Metagenoma:</strong></p>
@@ -166,14 +166,14 @@ rm *.gz</div>
 -t 8 -m 16
 </div>      
 
-<h2 id="funcional">Anotación funcional de MAGs</h2>
+<h1 id="funcional">Anotación funcional de MAGs</h1>
 <p><strong>Instalación de programas:</strong></p>
 <div class="code-box">conda install bioconda::prokka</div>
 <P>Utilizamos Prokka para realizar la anotación estructural y funcional de los MAGs que logramos ensamblar</P>
 <div class="code-box">prokka /ruta/a/los/MAGs/ensamblados/bin1.fasta \
   --outdir /ruta/a/la/carpeta/de/salida --cpus 8</div>
 
-      <h2 id="filogenomica">Filogenómica de MAGs</h2>
+      <h1 id="filogenomica">Filogenómica de MAGs</h1>
       <p><strong>Instalación de programas:</strong></p>
       <div class="code-box">*GTDB-tk</div>
       
