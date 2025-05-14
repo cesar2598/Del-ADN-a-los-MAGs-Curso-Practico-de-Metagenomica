@@ -53,8 +53,11 @@
 
       <h2 id="limpieza">Análisis preliminar y limpieza de secuencias crudas</h2>
       <p><strong>Instalación de programas:</strong></p>
+      <p>FastQC</p>
       <div class="code-box">conda install bioconda::fastqc</div>
+      <p>MultiQC</p>
       <div class="code-box">conda install bioconda::multiqc</div>
+      <p>Trimmomatic</p>
       <div class="code-box">conda install bioconda::trimmomatic</div>
 
       <h2 id="taxonomia">Anotación taxonómica</h2>
@@ -63,16 +66,24 @@
       <p><strong>Instalación de Kraken-biom:</strong></p>
       <div class="code-box">conda create -n krakenbiom python=2.7 kraken-biom -c bioconda -c conda-forge</div>
       <p>El proceso de anotación consiste en comparar secuencias propias contra una base de datos de referencia. Kraken2 tiene sus propias bases de datos preconstruidas:<br>
+        
       <a href="https://benlangmead.github.io/aws-indexes/k2" target="_blank">Enlace a las bases de datos</a></p>
       <p>Descargar bases de datos Standar-8:</p>
       Pueden dar click sobre el archio .tar.gz o utilizar el comando desde su terminal.<br>
       <div class="code-box">wget https://genome-idx.s3.amazonaws.com/kraken/k2_standard_08gb_20250402.tar.gz</div>
       <p><strong>Ejecutar Kraken2:</strong></p>
-      <div class="code-box">kraken2 --db ~/DB_PlusPF-8 --paired ~/nombre_archivo_forward.fastq ~/nombre_archivo_reverse.fastq --report ~/Kraken2/nombre_de_la_muestra_report --output ~/nombre_de_la_muestra --threads 28</div>
+      <div class="code-box">kraken2 --db /ruta/a/la/base/de/datos/DB_PlusPF-8 \
+--paired /ruta/al/archivo/_R1.fastq /ruta/al/archivo/_R2.fastq --report /ruta/a/de/salida/Kraken2/_report \
+--output /ruta/de/salida/kraken2/nombre_de_la_muestra --threads 28</div>
+      
        <p><strong>Ejecutar Kraken-Biom:</strong></p>
+      <p>Activar el ambiente</p>
       <div class="code-box">conda activate krakenbiom </div>
+      <p>Instalar las librerías necesarias</p>
       <div class="code-box">pip install pathlib </div>
-      <div class="code-box">kraken-biom ~/Muestra_1_report ~/muestra_2_report -m metadata.tsv -o ~/Archivo_de_salida </div>
+      <P>Convertir los archivos "report" en archivos .biom</P>
+      <div class="code-box">kraken-biom /ruta/a/la/carpeta/Kraken2/Muestra_1_report /ruta/a/la/carpeta/Kraken2/muestra_2_report \
+      -m /ruta/al/archivo/de/metadatos/metadata.tsv -o /ruta/del/archivo/de/salida/Metagenomas.biom </div>
       
       <h2 id="diversidad">Análisis de diversidad</h2>
       <p><strong>Instalación de R y RStudio:</strong></p>
