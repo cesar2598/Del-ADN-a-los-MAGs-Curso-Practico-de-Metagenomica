@@ -171,11 +171,31 @@ rm *.gz</div>
 <div class="code-box">conda install bioconda::prokka</div>
 <P>Utilizamos Prokka para realizar la anotación estructural y funcional de los MAGs que logramos ensamblar</P>
 <div class="code-box">prokka /ruta/a/los/MAGs/ensamblados/bin1.fasta \
-  --outdir /ruta/a/la/carpeta/de/salida --cpus 8</div>
+--outdir /ruta/a/la/carpeta/de/salida --cpus 8</div>
 
-      <h1 id="filogenomica">Filogenómica de MAGs</h1>
-      <p><strong>Instalación de programas:</strong></p>
-      <div class="code-box">*GTDB-tk</div>
+<h1 id="filogenomica">Filogenómica de MAGs</h1>
+<p><strong>Instalación de programas:</strong></p>
+<div class="code-box">mamba create -n gtdbtk -c conda-forge -c bioconda gtdbtk=2.1.1</div>
+<p><strong>Descarga de bases de datos</strong></p>
+<div class="code-box">mamba create -n gtdbtk -c conda-forge -c bioconda gtdbtk=2.1.1</div>
+<p>Automático</p>
+<div class="code-box">download-db.sh</div>
+<p>Manual</p>
+      
+Activar el ambiente<br>
+<div class="code-box">conda activate gtdbtk</div>
+Descargar y descomprimir la base de datos<br>
+<div class="code-box">wget https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/auxillary_files/gtdbtk_package/full_package/gtdbtk_data.tar.gz</div>
+<div class="code-box">tar xvzf gtdbtk_data.tar.gz</div>    
+Establecer la ruta del archivo que contiene la base de daos descargada<br>
+<div class="code-box">conda env config vars set GTDBTK_DATA_PATH="/ruta/a/la/base/de/datos";</div>
+
+<p><strong>Realizar la asignicación taxonómica mediante el módulo calssify_wf</strong></p>
+<div class="code-box">gtdbtk classify_wf --genome_dir /ruta/a/los/genomas/ensamblados/.fa --out_dir /ruta/a/la/carpeta/de/salida --cpus 8 --mash_db /ruta/a/la/base/de/datos/mash_db -x fa -f</div>
+
+<p><strong>Crear el árbol filogenético para cada grupo</strong></p>
+<div class="code-box">gtdbtk de_novo_wf --genome_dir /ruta/al/genoma/en/formato/.fa --taxa_filter p__Myxococcota --outgroup_taxon g__Leptospira --bacteria --out_dir /ruta/a/la/carpeta/de/salida --cpus 1 -x fa</div>
+    
       
 <h1 id="Glosario">Glosario</h1>
  <h2>Comandos Básicos de Linux</h2>
