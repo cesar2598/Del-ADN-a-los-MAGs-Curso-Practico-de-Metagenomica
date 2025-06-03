@@ -38,11 +38,14 @@
       <h2 id="conda">Conda</h2>
       <p><strong>Miniconda:</strong> <a href="https://www.anaconda.com/docs/getting-started/miniconda/install#macos-linux-installation" target="_blank">Instalación</a></p>
       <div class="code-box">wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</div>
-      <div class="code-box">bash ~/Miniconda3-latest-Linux-x86_64.sh</div>
-      <p>Aclaración: el símbolo ~ debe ser reemplazado con la ruta local al archivo</p>
-      <p>Press Return to review Anaconda’s Terms of Service (TOS). Then press and hold Return to scroll.<br>
-      Enter yes to agree to the TOS.<br>
-      Press Return to accept la ubicación de instalación por defecto o elige una diferente.<br>
+      <div class="code-box">bash /ruta/al/archivo/Miniconda3-latest-Linux-x86_64.sh</div>
+      <p>Aclaración: Se debe reemplazar la ruta del archivo</p>
+      
+      <p>Instrucciones adicionales para instalar miniconda</p>
+      
+      <p><strong>Presiona y manten Enter para leer los términos de uso de conda (TOS).<br>
+      Escribir yes para aceptar los TOS.<br>
+      Presiona Enter para aceptar la ubicación de instalación por defecto o elige una diferente.<br>
       Elige una opción de inicialización:<br>
       Yes - conda modificará la terminal para iniciarse automáticamente.<br>
       No - deberás iniciar conda manualmente.<br>
@@ -190,6 +193,8 @@ Descargar y descomprimir la base de datos<br>
 Establecer la ruta del archivo que contiene la base de daos descargada<br>
 <div class="code-box">conda env config vars set GTDBTK_DATA_PATH="/ruta/a/la/base/de/datos";</div>
 
+<p><strong>GTDB-Tk:</strong> <a href="https://ecogenomics.github.io/GTDBTk/" target="_blank">Documentación</a></p>
+      
 <p><strong>Realizar la asignicación taxonómica mediante el módulo calssify_wf</strong></p>
 <div class="code-box">gtdbtk classify_wf --genome_dir /ruta/a/los/genomas/ensamblados/.fa --out_dir /ruta/a/la/carpeta/de/salida --cpus 8 --mash_db /ruta/a/la/base/de/datos/mash_db -x fa -f</div>
 
